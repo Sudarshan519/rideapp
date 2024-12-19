@@ -28,7 +28,8 @@ class Otp extends StatelessWidget {
             Center(
               child: Text(
                 "Phone Verification",
-                style: Get.textTheme.titleLarge,
+                style: Get.textTheme.titleLarge
+                    ?.copyWith(fontWeight: FontWeight.w600),
               ),
             ),
             const SizedBox(
@@ -95,27 +96,25 @@ class Otp extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     Expanded(
-                      child: Expanded(
-                        child: RichText(
-                            text: TextSpan(children: [
-                          TextSpan(
-                            text: "Didn't receive code? ",
-                            style: Get.textTheme.bodyLarge?.copyWith(
-                              fontWeight: FontWeight.w600,
-                              color: Colors.grey.shade600,
-                            ),
+                      child: RichText(
+                          text: TextSpan(children: [
+                        TextSpan(
+                          text: "Didn't receive code? ",
+                          style: Get.textTheme.bodyLarge?.copyWith(
+                            fontWeight: FontWeight.w600,
+                            color: Colors.grey.shade600,
                           ),
-                          TextSpan(
-                            recognizer: TapGestureRecognizer()
-                              ..onTap = () => Get.to(const Otp()),
-                            text: "Resend again",
-                            style: Get.textTheme.bodyLarge?.copyWith(
-                              fontWeight: FontWeight.w600,
-                              color: Palette.primary,
-                            ),
-                          )
-                        ])),
-                      ),
+                        ),
+                        TextSpan(
+                          recognizer: TapGestureRecognizer()
+                            ..onTap = () => Get.to(const Otp()),
+                          text: "Resend again",
+                          style: Get.textTheme.bodyLarge?.copyWith(
+                            fontWeight: FontWeight.w600,
+                            color: Palette.primary,
+                          ),
+                        )
+                      ])),
                     )
                   ],
                 ),
@@ -154,16 +153,19 @@ class BackButtonWidget extends StatelessWidget {
         child: Row(
           mainAxisSize: MainAxisSize.min,
           children: [
-            const Icon(
-              Icons.arrow_back_ios,
-              size: 24,
+            Icon(
+              Icons.arrow_back_ios_rounded,
+              size: 20,
               weight: 1,
-              color: Colors.grey,
+              color: Colors.grey.shade700,
+            ),
+            SizedBox(
+              width: 8,
             ),
             Text(
               "Back",
               style: Get.textTheme.bodyLarge
-                  ?.copyWith(color: Colors.grey.shade600),
+                  ?.copyWith(color: Colors.grey.shade800),
             ),
           ],
         ),

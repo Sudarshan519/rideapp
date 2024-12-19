@@ -127,7 +127,7 @@ class _CustomInputFieldState extends State<CustomInputField> {
             filled: widget.backgroundColor != null ? true : false,
             isDense: false,
             contentPadding: widget.contentPadding ??
-                const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
+                const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
             hintText: widget.hintText,
             counterText: "",
             // prefix: widget.prefix,
@@ -136,8 +136,8 @@ class _CustomInputFieldState extends State<CustomInputField> {
             errorMaxLines: 2,
             hintStyle: !widget.makeHintBold
                 ? AppTextStyles.normal.copyWith(
-                    color: "#D0D0D0".toHex(),
-                    fontWeight: FontWeight.w600,
+                    color: "#A0A0A0".toHex(),
+                    fontWeight: FontWeight.w500,
                   )
                 : AppTextStyles.normal.copyWith(color: Colors.black),
             // prefixIconConstraints: BoxConstraints(
@@ -187,7 +187,7 @@ class _CustomInputFieldState extends State<CustomInputField> {
             disabledBorder: OutlineInputBorder(
                 borderSide: widget.hideUnderlineBorder
                     ? BorderSide.none
-                    : BorderSide(color: Colors.grey.shade300)),
+                    : BorderSide(color: Colors.grey.shade400)),
             focusedBorder: OutlineInputBorder(
                 borderSide: widget.hideUnderlineBorder
                     ? BorderSide.none
@@ -195,11 +195,11 @@ class _CustomInputFieldState extends State<CustomInputField> {
             enabledBorder: OutlineInputBorder(
                 borderSide: widget.hideUnderlineBorder
                     ? BorderSide.none
-                    : BorderSide(color: Colors.grey.shade300)),
+                    : BorderSide(color: Colors.grey.shade400)),
             border: OutlineInputBorder(
                 borderSide: widget.hideUnderlineBorder
                     ? BorderSide.none
-                    : BorderSide(color: Colors.grey.shade300))),
+                    : BorderSide(color: Colors.grey.shade400))),
       ),
     );
   }

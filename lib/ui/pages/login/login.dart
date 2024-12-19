@@ -56,7 +56,10 @@ class SignIn extends StatelessWidget {
                   SizedBox(
                     width: 8,
                   ),
-                  Text("or"),
+                  Text(
+                    "or",
+                    style: TextStyle(color: Colors.grey),
+                  ),
                   SizedBox(
                     width: 8,
                   ),
@@ -112,7 +115,7 @@ class SignIn extends StatelessWidget {
                     "Don't have an account? ",
                     style: Get.textTheme.bodyLarge?.copyWith(
                       fontWeight: FontWeight.w600,
-                      color: Colors.grey.shade600,
+                      color: Colors.grey.shade700,
                     ),
                   ),
                   InkWell(

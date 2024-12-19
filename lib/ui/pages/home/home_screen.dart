@@ -32,24 +32,27 @@ class _HomeState extends State<Home> {
                     borderRadius: BorderRadius.all(Radius.circular(4))),
                 margin: const EdgeInsets.symmetric(horizontal: 20),
                 height: 50.h,
-                child: const Row(children: [
-                  Icon(Icons.menu),
+                child: Row(children: [
+                  Icon(
+                    Icons.menu,
+                    size: 20,
+                  ),
                   SizedBox(
                     width: 20,
                   ),
                   Icon(
                     Icons.radio_button_checked,
                     color: Colors.green,
+                    size: 20,
                   ),
-                  Expanded(
-                    child: TextField(
-                      enabled: false,
-                      decoration: InputDecoration(
-                          contentPadding: EdgeInsets.symmetric(horizontal: 8),
-                          border: InputBorder.none,
-                          hintText: "Current Location/Pickup point"),
-                    ),
+                  SizedBox(
+                    width: 8,
                   ),
+                  Text("Current Location/Pickup point",
+                      style: TextStyle(
+                          fontSize: 12,
+                          fontWeight: FontWeight.w400,
+                          color: Colors.grey.shade800)),
                 ]),
               ),
             ),
@@ -129,6 +132,7 @@ class HomeBottomSheet extends StatelessWidget {
               onTap: () {
                 Get.to(() => const SearchPickupScreen());
               },
+              contentPadding: EdgeInsets.symmetric(vertical: 8),
               enabled: false,
               backgroundColor: "#F7F6FF".toHex(),
               hintText: "Where would you go?",
@@ -185,22 +189,29 @@ class HistoryLocation extends StatelessWidget {
       child: Row(
         children: [
           icon ??
-              const Icon(
+              Icon(
                 Icons.watch_later_outlined,
-                size: 32,
-                color: Colors.grey,
+                size: 16,
+                weight: 1,
+                color: Colors.grey.shade300,
               ),
           const SizedBox(
-            width: 12,
+            width: 16,
           ),
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(title ?? "Steak Resturant", style: Get.textTheme.bodyLarge),
+              Text(title ?? "Steak Resturant",
+                  style: Get.textTheme.bodyLarge?.copyWith(
+                      color: Colors.black,
+                      fontWeight: FontWeight.w500,
+                      fontSize: 14)),
               Text(
                 subtitle ?? "8 Norman St, East Sydney, NSW 2010",
-                style: Get.textTheme.bodyMedium
-                    ?.copyWith(color: Colors.grey.shade700),
+                style: Get.textTheme.bodyMedium?.copyWith(
+                    color: Colors.grey.shade700,
+                    fontSize: 12,
+                    fontWeight: FontWeight.w300),
               ),
             ],
           )

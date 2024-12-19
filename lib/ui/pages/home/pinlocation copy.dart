@@ -35,7 +35,7 @@ class _PinDropLocationState extends State<PinDropLocation> {
                     borderRadius: BorderRadius.all(Radius.circular(4))),
                 margin: const EdgeInsets.symmetric(horizontal: 20),
                 height: 50.h,
-                child: const Row(children: [
+                child: Row(children: [
                   Icon(Icons.menu),
                   SizedBox(
                     width: 20,
@@ -44,15 +44,14 @@ class _PinDropLocationState extends State<PinDropLocation> {
                     Icons.radio_button_checked,
                     color: Colors.green,
                   ),
-                  Expanded(
-                    child: TextField(
-                      enabled: false,
-                      decoration: InputDecoration(
-                          contentPadding: EdgeInsets.symmetric(horizontal: 8),
-                          border: InputBorder.none,
-                          hintText: "XTRI- Din Tai Fung"),
-                    ),
+                  SizedBox(
+                    width: 8,
                   ),
+                  Text("XTRI- Din Tai Fung",
+                      style: TextStyle(
+                          fontSize: 12,
+                          fontWeight: FontWeight.w400,
+                          color: Colors.grey.shade800)),
                 ]),
               ),
             ),

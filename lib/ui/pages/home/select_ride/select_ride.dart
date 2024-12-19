@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:rideapp/ui/pages/home/home_screen.dart';
 import 'package:rideapp/ui/pages/utils/colors.dart';
@@ -32,8 +33,8 @@ class _SelectRidePageState extends State<SelectRidePage> {
                     color: Colors.white,
                     borderRadius: BorderRadius.all(Radius.circular(4))),
                 margin: const EdgeInsets.symmetric(horizontal: 20),
-                height: 53,
-                child: const Row(children: [
+                height: 50.h,
+                child: Row(children: [
                   Icon(Icons.menu),
                   SizedBox(
                     width: 20,
@@ -42,16 +43,14 @@ class _SelectRidePageState extends State<SelectRidePage> {
                     Icons.radio_button_checked,
                     color: Colors.green,
                   ),
-                  Expanded(
-                    child: TextField(
-                      enabled: false,
-                      decoration: InputDecoration(
-                          contentPadding: EdgeInsets.symmetric(horizontal: 8),
-                          border: InputBorder.none,
-                          hintText: "Current Location/Pickup point",
-                          hintStyle: TextStyle(fontWeight: FontWeight.w400)),
-                    ),
+                  SizedBox(
+                    width: 8,
                   ),
+                  Text("Current Location/Pickup point",
+                      style: TextStyle(
+                          fontSize: 12,
+                          fontWeight: FontWeight.w400,
+                          color: Colors.grey.shade800)),
                 ]),
               ),
             ),
@@ -198,14 +197,19 @@ class RidesWidget extends StatelessWidget {
           decoration: BoxDecoration(
               color: isSelected ? Palette.primary : null,
               borderRadius: BorderRadius.circular(12),
-              border: Border.all(
-                color: Colors.grey.shade300,
-              )),
+              border: isSelected
+                  ? null
+                  : Border.all(
+                      color: Colors.grey.shade200,
+                    )),
           margin: const EdgeInsets.symmetric(horizontal: 20),
           padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
           child: Row(
             children: [
-              Image.asset(image),
+              Image.asset(
+                image,
+                width: 58,
+              ),
               const SizedBox(
                 width: 20,
               ),

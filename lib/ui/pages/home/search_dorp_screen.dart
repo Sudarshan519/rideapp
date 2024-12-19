@@ -17,7 +17,7 @@ class _SearchDropScreenState extends State<SearchDropScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        resizeToAvoidBottomInset: false,
+      resizeToAvoidBottomInset: false,
       backgroundColor: Palette.primary,
       body: SafeArea(
         child: Column(
@@ -61,13 +61,17 @@ class _SearchDropScreenState extends State<SearchDropScreen> {
               height: 20,
             ),
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 30),
+              padding: const EdgeInsets.symmetric(horizontal: 18),
               child: CustomInputField(
+                autofocus: true,
                 onTap: () {},
                 enabled: true,
                 backgroundColor: "#F7F6FF".toHex(),
                 hintText: "Where would you go?",
-                prefix: Image.asset("assets/search.png"),
+                prefix: Image.asset(
+                  "assets/search.png",
+                  // height: 24,
+                ),
                 suffixIcon: Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 12.0),
                   child: Image.asset(
@@ -95,15 +99,16 @@ class _SearchDropScreenState extends State<SearchDropScreen> {
                           padding: const EdgeInsets.only(top: 20),
                           physics: const NeverScrollableScrollPhysics(),
                           shrinkWrap: true,
-                          itemBuilder: (i, _) => InkWell(
+                          itemBuilder: (_, i) => InkWell(
                                 onTap: () =>
                                     Get.to(() => const PinDropLocation()),
                                 child: HistoryLocation(
-                                  title: "Work",
+                                  title: i != 0 ? "Work" : "Home",
                                   icon: Icon(
                                     Icons.favorite_outline_rounded,
                                     color: Colors.deepPurple.shade200,
                                     weight: .5,
+                                    size: 16,
                                   ),
                                 ),
                               ),
@@ -125,9 +130,15 @@ class _SearchDropScreenState extends State<SearchDropScreen> {
                                 minLeadingWidth: 0,
                                 leading: const Icon(
                                   Icons.circle,
-                                  size: 12,
+                                  size: 10,
                                 ),
-                                title: Text(e),
+                                title: Text(
+                                  e,
+                                  style: TextStyle(
+                                      color: Colors.black,
+                                      fontSize: 12,
+                                      fontWeight: FontWeight.w500),
+                                ),
                               ))
                           .toList(),
                     ],

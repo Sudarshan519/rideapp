@@ -16,7 +16,7 @@ class SearchPickupScreen extends StatefulWidget {
 class _SearchPickupScreenState extends State<SearchPickupScreen> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold( 
+    return Scaffold(
       resizeToAvoidBottomInset: false,
       backgroundColor: Palette.primary,
       body: SafeArea(
@@ -61,8 +61,9 @@ class _SearchPickupScreenState extends State<SearchPickupScreen> {
               height: 20,
             ),
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 30),
+              padding: const EdgeInsets.symmetric(horizontal: 18),
               child: CustomInputField(
+                autofocus: true,
                 onTap: () {},
                 enabled: true,
                 backgroundColor: "#F7F6FF".toHex(),
@@ -95,10 +96,10 @@ class _SearchPickupScreenState extends State<SearchPickupScreen> {
                           padding: const EdgeInsets.only(top: 20),
                           physics: const NeverScrollableScrollPhysics(),
                           shrinkWrap: true,
-                          itemBuilder: (i, _) => InkWell(
+                          itemBuilder: (_, i) => InkWell(
                                 onTap: () => Get.to(() => PinPickupLocation()),
                                 child: HistoryLocation(
-                                  title: "Work",
+                                  title: i != 0 ? "Work" : "Home",
                                   icon: Icon(
                                     Icons.favorite_outline_rounded,
                                     color: Colors.deepPurple.shade200,
@@ -124,9 +125,15 @@ class _SearchPickupScreenState extends State<SearchPickupScreen> {
                                 minLeadingWidth: 0,
                                 leading: const Icon(
                                   Icons.circle,
-                                  size: 12,
+                                  size: 10,
                                 ),
-                                title: Text(e),
+                                title: Text(
+                                  e,
+                                  style: TextStyle(
+                                      color: Colors.black,
+                                      fontSize: 12,
+                                      fontWeight: FontWeight.w500),
+                                ),
                               ))
                           .toList(),
                     ],

@@ -18,7 +18,7 @@ class PinPickupLocation extends StatefulWidget {
 class _PinPickupLocationState extends State<PinPickupLocation> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold( 
+    return Scaffold(
       resizeToAvoidBottomInset: false,
       body: SafeArea(
         child: Stack(
@@ -35,7 +35,7 @@ class _PinPickupLocationState extends State<PinPickupLocation> {
                     borderRadius: BorderRadius.all(Radius.circular(4))),
                 margin: const EdgeInsets.symmetric(horizontal: 20),
                 height: 50.h,
-                child: const Row(children: [
+                child: Row(children: [
                   Icon(Icons.menu),
                   SizedBox(
                     width: 20,
@@ -44,15 +44,14 @@ class _PinPickupLocationState extends State<PinPickupLocation> {
                     Icons.radio_button_checked,
                     color: Colors.green,
                   ),
-                  Expanded(
-                    child: TextField(
-                      enabled: false,
-                      decoration: InputDecoration(
-                          contentPadding: EdgeInsets.symmetric(horizontal: 8),
-                          border: InputBorder.none,
-                          hintText: "XTRI- Din Tai Fung"),
-                    ),
+                  SizedBox(
+                    width: 8,
                   ),
+                  Text("XTRI- Din Tai Fung",
+                      style: TextStyle(
+                          fontSize: 12,
+                          fontWeight: FontWeight.w400,
+                          color: Colors.grey.shade800)),
                 ]),
               ),
             ),

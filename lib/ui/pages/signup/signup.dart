@@ -1,5 +1,3 @@
-import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -79,11 +77,11 @@ class _SignupState extends State<Signup> {
                         fontSize: 10.spMin, color: Colors.red.shade800),
                     errorMaxLines: 2,
                     hintStyle: AppTextStyles.normal.copyWith(
-                      color: "#D0D0D0".toHex(),
-                      fontWeight: FontWeight.w600,
+                      color: "#A0A0A0".toHex(),
+                      fontWeight: FontWeight.w500,
                     ),
-                    prefixIconConstraints: BoxConstraints(
-                        minWidth: 0, maxHeight: Platform.isIOS ? 24.r : 18.r),
+                    // prefixIconConstraints: BoxConstraints(
+                    //     minWidth: 0, maxHeight: Platform.isIOS ? 24.r : 18.r),
                     suffixIconConstraints:
                         BoxConstraints(minWidth: 0, maxHeight: 18.r),
                     errorBorder: OutlineInputBorder(
@@ -93,9 +91,9 @@ class _SignupState extends State<Signup> {
                     focusedBorder: OutlineInputBorder(
                         borderSide: BorderSide(color: Palette.primaryBlue)),
                     enabledBorder: OutlineInputBorder(
-                        borderSide: BorderSide(color: Colors.grey.shade300)),
+                        borderSide: BorderSide(color: Colors.grey.shade400)),
                     border: OutlineInputBorder(
-                        borderSide: BorderSide(color: Colors.grey.shade300))),
+                        borderSide: BorderSide(color: Colors.grey.shade400))),
                 onInputChanged: (e) {},
                 onInputValidated: (bool value) {},
                 selectorConfig: const SelectorConfig(
