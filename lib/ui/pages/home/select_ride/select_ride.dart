@@ -1,0 +1,243 @@
+import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:rideapp/ui/pages/home/home_screen.dart';
+import 'package:rideapp/ui/pages/utils/colors.dart';
+import 'package:rideapp/ui/pages/widgets/app_button.dart';
+
+class SelectRidePage extends StatefulWidget {
+  const SelectRidePage({super.key});
+
+  @override
+  State<SelectRidePage> createState() => _SelectRidePageState();
+}
+
+class _SelectRidePageState extends State<SelectRidePage> {
+  var selectedRide;
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: SafeArea(
+        child: Stack(
+          children: [
+            const Map(),
+            Positioned(
+              top: 20,
+              left: 20,
+              right: 20,
+              child: Container(
+                padding: const EdgeInsets.symmetric(horizontal: 20),
+                decoration: const BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.all(Radius.circular(4))),
+                margin: const EdgeInsets.symmetric(horizontal: 20),
+                height: 53,
+                child: const Row(children: [
+                  Icon(Icons.menu),
+                  SizedBox(
+                    width: 20,
+                  ),
+                  Icon(
+                    Icons.radio_button_checked,
+                    color: Colors.green,
+                  ),
+                  Expanded(
+                    child: TextField(
+                      enabled: false,
+                      decoration: InputDecoration(
+                          contentPadding: EdgeInsets.symmetric(horizontal: 8),
+                          border: InputBorder.none,
+                          hintText: "Current Location/Pickup point"),
+                    ),
+                  ),
+                ]),
+              ),
+            ),
+            Positioned(
+                bottom: 0,
+                left: 0,
+                right: 0,
+                child: Column(
+                  children: [
+                    Align(
+                      alignment: Alignment.topRight,
+                      child: Container(
+                        padding: EdgeInsets.all(8),
+                        decoration: BoxDecoration(
+                            color: Colors.white,
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.grey,
+                                offset: Offset(0, 1),
+                                // blurRadius: 1,
+                              )
+                            ],
+                            borderRadius: BorderRadius.circular(4)),
+                        margin: const EdgeInsets.only(right: 16),
+                        child: Text("13 Dec,\n 01:50 PM") ??
+                            Image.asset(
+                              'assets/clock-two-svgrepo-com 1.png',
+                              width: 50,
+                            ),
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 16,
+                    ),
+                    BottomSheetWidget(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Container(
+                            height: 30,
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 30),
+                            child: InkWell(
+                              onTap: () {},
+                              child: Text(
+                                "Available Rides",
+                                style: Get.textTheme.titleMedium?.copyWith(
+                                    fontWeight: FontWeight.w600, fontSize: 18),
+                              ),
+                            ),
+                          ),
+                          const SizedBox(
+                            height: 20,
+                          ),
+                          RidesWidget(
+                            isSelected: selectedRide == 1,
+                            image: 'assets/Image 3.png',
+                            name: 'Micro',
+                            person: '4+1 Person',
+                            amount: '\$20.00',
+                            onTap: () {
+                              setState(() {
+                                selectedRide = 1;
+                              });
+                            },
+                          ),
+                          RidesWidget(
+                            isSelected: selectedRide == 2,
+                            image: 'assets/image 7.png',
+                            name: 'Bajaji',
+                            person: '4+1 Person',
+                            amount: '\$10.00',
+                            onTap: () {
+                              setState(() {
+                                selectedRide = 2;
+                              });
+                            },
+                          ),
+                          RidesWidget(
+                            isSelected: selectedRide == 3,
+                            image: 'assets/Image 3.png',
+                            name: 'Mini',
+                            person: '1 Person',
+                            amount: '\$5.00',
+                            onTap: () {
+                              setState(() {
+                                selectedRide = 3;
+                              });
+                            },
+                          ),
+                          const SizedBox(
+                            height: 30,
+                          ),
+                          Padding(
+                            padding:
+                                const EdgeInsets.symmetric(horizontal: 20.0),
+                            child: AppButton(
+                              isRounded: true,
+                              label: 'Book Ride',
+                              onPressed: () {},
+                            ),
+                          ),
+                          const SizedBox(
+                            height: 30,
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                )),
+            Positioned(
+                top: 140, left: 120, child: Image.asset('assets/Path.png'))
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class RidesWidget extends StatelessWidget {
+  const RidesWidget({
+    super.key,
+    this.isSelected = false,
+    required this.onTap,
+    required this.image,
+    required this.name,
+    required this.person,
+    required this.amount,
+  });
+  final Function() onTap;
+  final String image;
+  final String name;
+  final String person;
+  final String amount;
+  final bool isSelected;
+  @override
+  Widget build(BuildContext context) {
+    return InkWell(
+      onTap: onTap,
+      child: Padding(
+        padding: const EdgeInsets.only(bottom: 18.0),
+        child: Container(
+          decoration: BoxDecoration(
+              color: isSelected ? Palette.primary : null,
+              borderRadius: BorderRadius.circular(12),
+              border: Border.all(
+                color: Colors.grey.shade300,
+              )),
+          margin: const EdgeInsets.symmetric(horizontal: 20),
+          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
+          child: Row(
+            children: [
+              Image.asset(image),
+              const SizedBox(
+                width: 20,
+              ),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    name,
+                    style: TextStyle(
+                      color: isSelected ? Colors.white : null,
+                      fontSize: 16,
+                    ),
+                  ),
+                  Text(
+                    person,
+                    style: TextStyle(
+                      color: isSelected ? Colors.white : Colors.grey,
+                      fontWeight: FontWeight.w300,
+                    ),
+                  ),
+                ],
+              ),
+              const Spacer(),
+              Text(
+                amount,
+                style: TextStyle(
+                  color: isSelected ? Colors.white : null,
+                  fontSize: 16,
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}

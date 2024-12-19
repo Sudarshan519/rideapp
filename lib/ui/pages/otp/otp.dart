@@ -26,7 +26,7 @@ class Otp extends StatelessWidget {
             Center(
               child: Text(
                 "Phone Verification",
-                style: Get.textTheme.headlineLarge,
+                style: Get.textTheme.titleLarge,
               ),
             ),
             const SizedBox(
@@ -35,80 +35,93 @@ class Otp extends StatelessWidget {
             Center(
               child: Text(
                 "Enter your OTP Code",
-                style: Get.textTheme.bodySmall,
+                style: Get.textTheme.bodyLarge
+                    ?.copyWith(color: Colors.grey.shade600),
               ),
             ),
             const SizedBox(
               height: 40,
             ),
-            PinCodeTextField(
-              enableActiveFill: true,
-              obscureText: true,
-              autoFocus: true,
-              appContext: context,
-              length: 5,
-              onChanged: (String value) {},
-              textStyle: AppTextStyles.large,
-              keyboardType: TextInputType.number,
-              onCompleted: (v) {},
-              inputFormatters: const [
-                // FilteringTextInputFormatter.digitsOnly,
-                // LengthLimitingTextInputFormatter(4),
-              ],
-              cursorColor: Colors.transparent,
-              autoDisposeControllers: false,
-              animationType: AnimationType.none,
-              pinTheme: PinTheme(
-                fieldOuterPadding: const EdgeInsets.symmetric(horizontal: 8),
-                fieldHeight: 48,
-                fieldWidth: 52,
-                shape: PinCodeFieldShape.box,
-                inactiveFillColor: Colors.white,
-                activeColor: Palette.primary,
-                selectedColor: Palette.primary,
-                selectedFillColor: Colors.white,
-                activeFillColor: const Color.fromRGBO(247, 246, 255, 1),
-                inactiveColor: Colors.grey.shade300,
-                borderRadius: BorderRadius.circular(9.r),
-              ),
-            ),
-            SizedBox(
-              height: 40.h,
-            ),
-            const SizedBox(
-              height: 30,
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text(
-                  "Didn't receive code? ",
-                  style: Get.textTheme.bodyLarge?.copyWith(
-                    fontWeight: FontWeight.w600,
-                    color: Colors.grey.shade600,
-                  ),
-                ),
-                InkWell(
-                  onTap: () {
-                    Get.to(const Otp());
-                  },
-                  child: Text(
-                    "Resend",
-                    style: Get.textTheme.bodyLarge?.copyWith(
-                      fontWeight: FontWeight.w600,
-                      color: Palette.primary,
+            Center(
+              child: Column(
+                children: [
+                  Container(
+                    alignment: Alignment.center,
+                    width: 290,
+                    child: PinCodeTextField(
+                      enableActiveFill: true,
+                      obscureText: true,
+                      autoFocus: true,
+                      appContext: context,
+                      length: 5,
+                      onChanged: (String value) {},
+                      textStyle: AppTextStyles.large,
+                      keyboardType: TextInputType.number,
+                      onCompleted: (v) {},
+                      inputFormatters: const [
+                        // FilteringTextInputFormatter.digitsOnly,
+                        // LengthLimitingTextInputFormatter(4),
+                      ],
+                      cursorColor: Colors.transparent,
+                      autoDisposeControllers: false,
+                      animationType: AnimationType.none,
+                      pinTheme: PinTheme(
+                        borderWidth: 1,
+                        fieldHeight: 48,
+                        fieldWidth: 52,
+                        shape: PinCodeFieldShape.box,
+                        inactiveFillColor: Colors.white,
+                        activeColor: Palette.primary,
+                        selectedColor: Palette.primary,
+                        selectedFillColor: Colors.white,
+                        activeFillColor: const Color.fromRGBO(247, 246, 255, 1),
+                        inactiveColor: Colors.grey.shade300,
+                        borderRadius: BorderRadius.circular(9.r),
+                      ),
                     ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
             const SizedBox(
-              height: 80,
+              height: 20,
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 32),
+              child: SizedBox(
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    Text(
+                      "Didn't receive code? ",
+                      style: Get.textTheme.bodyLarge?.copyWith(
+                        fontWeight: FontWeight.w600,
+                        color: Colors.grey.shade600,
+                      ),
+                    ),
+                    InkWell(
+                      onTap: () {
+                        Get.to(const Otp());
+                      },
+                      child: Text(
+                        "Resend again",
+                        style: Get.textTheme.bodyLarge?.copyWith(
+                          fontWeight: FontWeight.w600,
+                          color: Palette.primary,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+            const SizedBox(
+              height: 120,
             ),
             AppButton(
               label: 'Verify',
               onPressed: () {
-                Get.to(()=>SignIn());
+                Get.to(() => const SignIn());
               },
             ),
             const SizedBox(
@@ -133,6 +146,7 @@ class BackButtonWidget extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.symmetric(vertical: 8.0),
         child: Row(
+          mainAxisSize: MainAxisSize.min,
           children: [
             const Icon(
               Icons.arrow_back_ios,

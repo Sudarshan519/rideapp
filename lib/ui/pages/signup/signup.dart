@@ -52,18 +52,12 @@ class _SignupState extends State<Signup> {
               ),
               InternationalPhoneNumberInput(
                 initialValue: PhoneNumber(
-                  // dialCode: getIt<EkycCubit>()
-                  //         .state
-                  //         .kycForm
-                  //         ?.emergency_number_country ??
-                  //     "+81",
                   isoCode: "IN",
                   phoneNumber: '',
                 ),
                 validator: (str) {
                   return null;
                 },
-
                 selectorTextStyle: AppTextStyles.normal.copyWith(
                   color: Colors.black,
                 ),
@@ -72,13 +66,9 @@ class _SignupState extends State<Signup> {
                 ),
                 searchBoxDecoration: const InputDecoration(
                   hintText: "Search ...",
-                  // isDense: true,
-                  // contentPadding:
-                  //     EdgeInsets.symmetric(vertical: 6.r),
                 ),
                 inputDecoration: InputDecoration(
                     isDense: false,
-                    // contentPadding: EdgeInsets.symmetric(vertical: 6.r),
                     errorStyle: TextStyle(
                         fontSize: 10.spMin, color: Colors.red.shade800),
                     errorMaxLines: 2,
@@ -99,9 +89,7 @@ class _SignupState extends State<Signup> {
                     border: OutlineInputBorder(
                         borderSide: BorderSide(color: Colors.grey.shade300))),
                 onInputChanged: (e) {},
-                onInputValidated: (bool value) {
-                  // print(value);
-                },
+                onInputValidated: (bool value) {},
                 selectorConfig: const SelectorConfig(
                     setSelectorButtonAsPrefixIcon: true,
                     useEmoji: true,
@@ -109,18 +97,11 @@ class _SignupState extends State<Signup> {
                     useBottomSheetSafeArea: true,
                     leadingPadding: 12),
                 ignoreBlank: false,
-
-                // autoValidateMode:
-                //     AutovalidateMode.o,
-                // initialValue: number,
-                // textFieldController: emergencyContact,
                 formatInput: true,
                 keyboardType: const TextInputType.numberWithOptions(
                     signed: true, decimal: true),
                 inputBorder: const UnderlineInputBorder(),
-                onSaved: (PhoneNumber number) {
-                  // print('On Saved: $number');
-                },
+                onSaved: (PhoneNumber number) {},
               ),
               const SizedBox(
                 height: 40,
@@ -161,7 +142,9 @@ class _SignupState extends State<Signup> {
               ),
               AppButton(
                 label: 'Sign up',
-                onPressed: () {},
+                onPressed: () {
+                  Get.to(() => const Otp());
+                },
               ),
               const SizedBox(
                 height: 30,

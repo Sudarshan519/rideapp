@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:rideapp/ui/pages/home/home.dart';
+import 'package:rideapp/ui/pages/home/home_screen.dart';
 import 'package:rideapp/ui/pages/otp/otp.dart';
 import 'package:rideapp/ui/pages/signup/signup.dart';
 import 'package:rideapp/ui/pages/utils/colors.dart';

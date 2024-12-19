@@ -1,5 +1,3 @@
-import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -34,6 +32,7 @@ class CustomInputField extends StatefulWidget {
   final bool autofocus;
   final bool isEmail;
   final String? value;
+  final Color? backgroundColor;
   const CustomInputField(
       {super.key,
       this.isPassword = false,
@@ -42,6 +41,7 @@ class CustomInputField extends StatefulWidget {
       this.validators,
       this.onChanged,
       this.prefixIcon,
+      this.backgroundColor,
       this.isNum = false,
       this.showIcon = true,
       this.autoValidate = false,
@@ -87,111 +87,118 @@ class _CustomInputFieldState extends State<CustomInputField> {
         ));
       }
     }
-    return TextFormField(
-      textCapitalization: widget.textCapitalization,
-      autocorrect: false,
-      autofocus: widget.autofocus,
-      readOnly: widget.readOnly,
-      enableSuggestions: false,
-      enabled: widget.enabled ?? true,
-      textAlignVertical: TextAlignVertical.center,
-      maxLength: widget.maxLength,
-      keyboardType: widget.isNum
-          ? const TextInputType.numberWithOptions(signed: true)
-          : widget.isEmail
-              ? TextInputType.emailAddress
-              : null,
-      autovalidateMode: widget.autoValidate
-          ? AutovalidateMode.always
-          : AutovalidateMode.onUserInteraction,
-      controller: widget.controller,
-      validator: widget.validators,
-      obscureText: widget.isPassword ? !passwordVisible : false,
-      onChanged: widget.onChanged,
-      onFieldSubmitted: widget.onFieldSubmitted,
-      style: AppTextStyles.normal
-          .copyWith(color: Colors.black, letterSpacing: widget.letterSpacing),
-      inputFormatters: (widget.textFormatters != null)
-          ? widget.textFormatters
-          : [
-              FilteringTextInputFormatter.deny(
-                  RegExp(Values().restricEmojiRegex)),
-              if (!widget.isPassword)
-                FilteringTextInputFormatter.deny(RegExp(r'^\s+')),
-            ],
-      onTap: widget.onTap,
-      decoration: InputDecoration(
-          isDense: false,
-          // contentPadding:
-          //     widget.contentPadding ?? EdgeInsets.symmetric(vertical: 6.r),
-          hintText: widget.hintText,
-          counterText: "",
-          // prefix: widget.prefix,
-          errorStyle: TextStyle(fontSize: 10.spMin, color: Colors.red.shade800),
-          errorMaxLines: 2,
-          hintStyle: !widget.makeHintBold
-              ? AppTextStyles.normal
-                  .copyWith(color: Colors.black.withOpacity(0.3))
-              : AppTextStyles.normal.copyWith(color: Colors.black),
-          prefixIconConstraints: BoxConstraints(
-              minWidth: 0, maxHeight: Platform.isIOS ? 24.r : 18.r),
-          suffixIconConstraints: BoxConstraints(minWidth: 0, maxHeight: 18.r),
-          prefixIcon: widget.prefix ??
-              (widget.enabled == false && widget.prefixIcon != null
-                  ? Padding(
-                      padding: EdgeInsets.only(right: 4.r),
-                      child: Image.asset(
-                        widget.prefixIcon!,
-                        width: 17.r,
-                        height: 17.r,
-                        fit: BoxFit.contain,
-                      ),
-                    )
-                  : widget.prefixIcon != null
-                      ? Padding(
-                          padding: EdgeInsets.only(right: 4.r),
-                          child: Image.asset(
-                            widget.prefixIcon!,
-                            width: 17.r,
-                            height: 17.r,
-                            fit: BoxFit.contain,
-                          ),
-                        )
-                      : null),
-          suffix: widget.isPassword
-              ? InkWell(
-                  onTap: () {
-                    setState(() {
-                      passwordVisible = !passwordVisible;
-                    });
-                  },
-                  child: Icon(
-                    passwordVisible ? Icons.visibility : Icons.visibility_off,
-                    size: 20.r,
-                    color: const Color.fromRGBO(0, 0, 0, 0.4),
-                  ),
-                )
-              : widget.suffixIcon,
-          errorBorder: OutlineInputBorder(
-              borderSide: widget.hideUnderlineBorder
-                  ? BorderSide.none
-                  : BorderSide(color: Colors.red.shade800)),
-          disabledBorder: OutlineInputBorder(
-              borderSide: widget.hideUnderlineBorder
-                  ? BorderSide.none
-                  : BorderSide(color: Colors.grey.shade300)),
-          focusedBorder: OutlineInputBorder(
-              borderSide: widget.hideUnderlineBorder
-                  ? BorderSide.none
-                  : BorderSide(color: Palette.primaryBlue)),
-          enabledBorder: OutlineInputBorder(
-              borderSide: widget.hideUnderlineBorder
-                  ? BorderSide.none
-                  : BorderSide(color: Colors.grey.shade300)),
-          border: OutlineInputBorder(
-              borderSide: widget.hideUnderlineBorder
-                  ? BorderSide.none
-                  : BorderSide(color: Colors.grey.shade300))),
+    return SizedBox(
+      child: TextFormField(
+        textCapitalization: widget.textCapitalization,
+        autocorrect: false,
+        autofocus: widget.autofocus,
+        readOnly: widget.readOnly,
+        enableSuggestions: false,
+        enabled: widget.enabled ?? true,
+        textAlignVertical: TextAlignVertical.center,
+        maxLength: widget.maxLength,
+        keyboardType: widget.isNum
+            ? const TextInputType.numberWithOptions(signed: true)
+            : widget.isEmail
+                ? TextInputType.emailAddress
+                : null,
+        autovalidateMode: widget.autoValidate
+            ? AutovalidateMode.always
+            : AutovalidateMode.onUserInteraction,
+        controller: widget.controller,
+        validator: widget.validators,
+        obscureText: widget.isPassword ? !passwordVisible : false,
+        onChanged: widget.onChanged,
+        onFieldSubmitted: widget.onFieldSubmitted,
+        style: AppTextStyles.normal
+            .copyWith(color: Colors.black, letterSpacing: widget.letterSpacing),
+        inputFormatters: (widget.textFormatters != null)
+            ? widget.textFormatters
+            : [
+                FilteringTextInputFormatter.deny(
+                    RegExp(Values().restricEmojiRegex)),
+                if (!widget.isPassword)
+                  FilteringTextInputFormatter.deny(RegExp(r'^\s+')),
+              ],
+        onTap: widget.onTap,
+        decoration: InputDecoration(
+            fillColor: widget.backgroundColor,
+            filled: widget.backgroundColor != null ? true : false,
+            isDense: false,
+            contentPadding: widget.contentPadding ??
+                const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
+            hintText: widget.hintText,
+            counterText: "",
+            // prefix: widget.prefix,
+            errorStyle:
+                TextStyle(fontSize: 10.spMin, color: Colors.red.shade800),
+            errorMaxLines: 2,
+            hintStyle: !widget.makeHintBold
+                ? AppTextStyles.normal.copyWith(
+                    color: Colors.black.withOpacity(0.3),
+                  )
+                : AppTextStyles.normal.copyWith(color: Colors.black),
+            // prefixIconConstraints: BoxConstraints(
+            //     minWidth: 0, maxHeight: Platform.isIOS ? 24.r : 18.r),
+            suffixIconConstraints: BoxConstraints(minWidth: 0, maxHeight: 18.r),
+            prefixIcon: widget.prefix ??
+                (widget.enabled == false && widget.prefixIcon != null
+                    ? Padding(
+                        padding: EdgeInsets.only(right: 4.r),
+                        child: Image.asset(
+                          widget.prefixIcon!,
+                          width: 17.r,
+                          height: 17.r,
+                          fit: BoxFit.contain,
+                        ),
+                      )
+                    : widget.prefixIcon != null
+                        ? Padding(
+                            padding: EdgeInsets.only(right: 4.r),
+                            child: Image.asset(
+                              widget.prefixIcon!,
+                              width: 17.r,
+                              height: 17.r,
+                              fit: BoxFit.contain,
+                            ),
+                          )
+                        : null),
+            suffixIcon: widget.suffixIcon,
+            // suffix: widget.isPassword
+            //     ? InkWell(
+            //         onTap: () {
+            //           setState(() {
+            //             passwordVisible = !passwordVisible;
+            //           });
+            //         },
+            //         child: Icon(
+            //           passwordVisible ? Icons.visibility : Icons.visibility_off,
+            //           size: 20.r,
+            //           color: const Color.fromRGBO(0, 0, 0, 0.4),
+            //         ),
+            //       )
+            //     : widget.suffixIcon,
+            errorBorder: OutlineInputBorder(
+                borderSide: widget.hideUnderlineBorder
+                    ? BorderSide.none
+                    : BorderSide(color: Colors.red.shade800)),
+            disabledBorder: OutlineInputBorder(
+                borderSide: widget.hideUnderlineBorder
+                    ? BorderSide.none
+                    : BorderSide(color: Colors.grey.shade300)),
+            focusedBorder: OutlineInputBorder(
+                borderSide: widget.hideUnderlineBorder
+                    ? BorderSide.none
+                    : BorderSide(color: Palette.primaryBlue)),
+            enabledBorder: OutlineInputBorder(
+                borderSide: widget.hideUnderlineBorder
+                    ? BorderSide.none
+                    : BorderSide(color: Colors.grey.shade300)),
+            border: OutlineInputBorder(
+                borderSide: widget.hideUnderlineBorder
+                    ? BorderSide.none
+                    : BorderSide(color: Colors.grey.shade300))),
+      ),
     );
   }
 }

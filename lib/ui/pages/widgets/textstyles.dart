@@ -17,7 +17,7 @@ class AppTextStyles {
       fontFamily: FontFamily.spprotext);
   static TextStyle normal = TextStyle(
       fontSize: 14.spMin,
-      fontWeight: FontWeight.w600,
+      fontWeight: FontWeight.w500,
       color: Colors.black.withOpacity(0.6),
       fontFamily: FontFamily.spprotext);
   static TextStyle medium = TextStyle(
