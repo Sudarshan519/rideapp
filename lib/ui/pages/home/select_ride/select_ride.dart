@@ -75,11 +75,11 @@ class _SelectRidePageState extends State<SelectRidePage> {
                             ],
                             borderRadius: BorderRadius.circular(4)),
                         margin: const EdgeInsets.only(right: 16),
-                        child: Text("13 Dec,\n 01:50 PM") ??
+                        child: //Text("13 Dec,\n 01:50 PM") ??
                             Image.asset(
-                              'assets/clock-two-svgrepo-com 1.png',
-                              width: 50,
-                            ),
+                          'assets/clock-two-svgrepo-com 1.png',
+                          width: 32,
+                        ),
                       ),
                     ),
                     const SizedBox(
