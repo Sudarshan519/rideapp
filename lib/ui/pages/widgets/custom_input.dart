@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:rideapp/ui/pages/utils/colors.dart';
+import 'package:rideapp/ui/pages/utils/extension.dart';
 import 'package:rideapp/ui/pages/widgets/constants.dart';
 import 'package:rideapp/ui/pages/widgets/textstyles.dart';
 
@@ -135,7 +136,8 @@ class _CustomInputFieldState extends State<CustomInputField> {
             errorMaxLines: 2,
             hintStyle: !widget.makeHintBold
                 ? AppTextStyles.normal.copyWith(
-                    color: Colors.black.withOpacity(0.3),
+                    color: "#D0D0D0".toHex(),
+                    fontWeight: FontWeight.w600,
                   )
                 : AppTextStyles.normal.copyWith(color: Colors.black),
             // prefixIconConstraints: BoxConstraints(

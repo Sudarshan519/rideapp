@@ -17,6 +17,7 @@ class _SelectRidePageState extends State<SelectRidePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      extendBodyBehindAppBar: true,
       body: SafeArea(
         child: Stack(
           children: [
@@ -47,7 +48,8 @@ class _SelectRidePageState extends State<SelectRidePage> {
                       decoration: InputDecoration(
                           contentPadding: EdgeInsets.symmetric(horizontal: 8),
                           border: InputBorder.none,
-                          hintText: "Current Location/Pickup point"),
+                          hintText: "Current Location/Pickup point",
+                          hintStyle: TextStyle(fontWeight: FontWeight.w400)),
                     ),
                   ),
                 ]),
@@ -161,8 +163,8 @@ class _SelectRidePageState extends State<SelectRidePage> {
                     ),
                   ],
                 )),
-            Positioned(
-                top: 140, left: 120, child: Image.asset('assets/Path.png'))
+            // Positioned(
+            //     top: 140, left: 120, child: Image.asset('assets/Path.png'))
           ],
         ),
       ),

@@ -17,6 +17,7 @@ class _SearchDropScreenState extends State<SearchDropScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        resizeToAvoidBottomInset: false,
       backgroundColor: Palette.primary,
       body: SafeArea(
         child: Column(

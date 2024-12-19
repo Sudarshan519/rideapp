@@ -19,13 +19,15 @@ class SignIn extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              SizedBox(height: 16),
               const BackButtonWidget(),
               const SizedBox(
                 height: 30,
               ),
               Text(
-                "Sign up",
-                style: Get.textTheme.headlineSmall,
+                "Sign in",
+                style: Get.textTheme.titleLarge
+                    ?.copyWith(fontWeight: FontWeight.w600),
               ),
               const SizedBox(
                 height: 80,

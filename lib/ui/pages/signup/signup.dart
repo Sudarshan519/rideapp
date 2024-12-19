@@ -6,6 +6,7 @@ import 'package:get/get.dart';
 import 'package:intl_phone_number_input/intl_phone_number_input.dart';
 import 'package:rideapp/ui/pages/otp/otp.dart';
 import 'package:rideapp/ui/pages/utils/colors.dart';
+import 'package:rideapp/ui/pages/utils/extension.dart';
 import 'package:rideapp/ui/pages/widgets/app_button.dart';
 import 'package:rideapp/ui/pages/widgets/custom_input.dart';
 import 'package:rideapp/ui/pages/widgets/textstyles.dart';
@@ -27,13 +28,15 @@ class _SignupState extends State<Signup> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              SizedBox(height: 16),
               const BackButtonWidget(),
               const SizedBox(
                 height: 30,
               ),
               Text(
                 "Sign up",
-                style: Get.textTheme.headlineSmall,
+                style: Get.textTheme.titleLarge
+                    ?.copyWith(fontWeight: FontWeight.w600),
               ),
               const SizedBox(
                 height: 20,
@@ -68,12 +71,17 @@ class _SignupState extends State<Signup> {
                   hintText: "Search ...",
                 ),
                 inputDecoration: InputDecoration(
+                    // contentPadding: const EdgeInsets.symmetric(
+                    //     horizontal: 20, vertical: 16),
+                    hintText: "Mobile Number",
                     isDense: false,
                     errorStyle: TextStyle(
                         fontSize: 10.spMin, color: Colors.red.shade800),
                     errorMaxLines: 2,
-                    hintStyle: AppTextStyles.normal
-                        .copyWith(color: Colors.black.withOpacity(0.3)),
+                    hintStyle: AppTextStyles.normal.copyWith(
+                      color: "#D0D0D0".toHex(),
+                      fontWeight: FontWeight.w600,
+                    ),
                     prefixIconConstraints: BoxConstraints(
                         minWidth: 0, maxHeight: Platform.isIOS ? 24.r : 18.r),
                     suffixIconConstraints:
@@ -177,30 +185,29 @@ class _SignupState extends State<Signup> {
                   Container(
                       height: 48,
                       width: 48,
+                      padding: EdgeInsets.all(8),
                       decoration: BoxDecoration(
-                          border: Border.all(color: Colors.grey),
+                          border: Border.all(color: Colors.grey.shade300),
                           borderRadius: BorderRadius.circular(8)),
-                      child: IconButton(
-                          onPressed: () {},
-                          icon: Image.asset(
-                            "assets/Gmail(1).png",
-                            height: 24,
-                          ))),
+                      child: Image.asset(
+                        "assets/Gmail(1).png",
+                        height: 24,
+                      )),
                   const SizedBox(
                     width: 16,
                   ),
                   Container(
                       height: 48,
                       width: 48,
+                      padding: EdgeInsets.all(8),
                       decoration: BoxDecoration(
-                          border: Border.all(color: Colors.grey),
+                          border: Border.all(color: Colors.grey.shade300),
                           borderRadius: BorderRadius.circular(8)),
-                      child: IconButton(
-                          onPressed: () {},
-                          icon: Image.asset(
-                            "assets/Facebook.png",
-                            height: 24,
-                          ))),
+                      child: Image.asset(
+                        "assets/Facebook.png",
+                        height: 24,
+                        width: 24,
+                      )),
                   const Spacer(),
                 ],
               ),

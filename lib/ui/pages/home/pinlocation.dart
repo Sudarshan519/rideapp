@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:rideapp/ui/pages/home/home_screen.dart';
 import 'package:rideapp/ui/pages/home/search_dorp_screen.dart';
@@ -17,7 +18,8 @@ class PinPickupLocation extends StatefulWidget {
 class _PinPickupLocationState extends State<PinPickupLocation> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return Scaffold( 
+      resizeToAvoidBottomInset: false,
       body: SafeArea(
         child: Stack(
           children: [
@@ -32,7 +34,7 @@ class _PinPickupLocationState extends State<PinPickupLocation> {
                     color: Colors.white,
                     borderRadius: BorderRadius.all(Radius.circular(4))),
                 margin: const EdgeInsets.symmetric(horizontal: 20),
-                height: 53,
+                height: 50.h,
                 child: const Row(children: [
                   Icon(Icons.menu),
                   SizedBox(

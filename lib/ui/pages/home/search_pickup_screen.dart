@@ -16,7 +16,8 @@ class SearchPickupScreen extends StatefulWidget {
 class _SearchPickupScreenState extends State<SearchPickupScreen> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return Scaffold( 
+      resizeToAvoidBottomInset: false,
       backgroundColor: Palette.primary,
       body: SafeArea(
         child: Column(

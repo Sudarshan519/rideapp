@@ -1,3 +1,4 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -19,6 +20,7 @@ class Otp extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            SizedBox(height: 16),
             const BackButtonWidget(),
             const SizedBox(
               height: 80,
@@ -87,30 +89,34 @@ class Otp extends StatelessWidget {
               height: 20,
             ),
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 32),
+              padding: const EdgeInsets.symmetric(horizontal: 16),
               child: SizedBox(
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-                    Text(
-                      "Didn't receive code? ",
-                      style: Get.textTheme.bodyLarge?.copyWith(
-                        fontWeight: FontWeight.w600,
-                        color: Colors.grey.shade600,
+                    Expanded(
+                      child: Expanded(
+                        child: RichText(
+                            text: TextSpan(children: [
+                          TextSpan(
+                            text: "Didn't receive code? ",
+                            style: Get.textTheme.bodyLarge?.copyWith(
+                              fontWeight: FontWeight.w600,
+                              color: Colors.grey.shade600,
+                            ),
+                          ),
+                          TextSpan(
+                            recognizer: TapGestureRecognizer()
+                              ..onTap = () => Get.to(const Otp()),
+                            text: "Resend again",
+                            style: Get.textTheme.bodyLarge?.copyWith(
+                              fontWeight: FontWeight.w600,
+                              color: Palette.primary,
+                            ),
+                          )
+                        ])),
                       ),
-                    ),
-                    InkWell(
-                      onTap: () {
-                        Get.to(const Otp());
-                      },
-                      child: Text(
-                        "Resend again",
-                        style: Get.textTheme.bodyLarge?.copyWith(
-                          fontWeight: FontWeight.w600,
-                          color: Palette.primary,
-                        ),
-                      ),
-                    ),
+                    )
                   ],
                 ),
               ),
