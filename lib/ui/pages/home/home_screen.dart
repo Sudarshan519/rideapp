@@ -48,11 +48,15 @@ class _HomeState extends State<Home> {
                   SizedBox(
                     width: 8,
                   ),
-                  Text("Current Location/Pickup point",
-                      style: TextStyle(
-                          fontSize: 12,
-                          fontWeight: FontWeight.w400,
-                          color: Colors.grey.shade800)),
+                  Expanded(
+                    child: Text("Current Location/Pickup point",
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
+                        style: TextStyle(
+                            fontSize: 12,
+                            fontWeight: FontWeight.w400,
+                            color: Colors.grey.shade800)),
+                  ),
                 ]),
               ),
             ),
@@ -77,6 +81,7 @@ class BottomSheetWidget extends StatelessWidget {
     this.height,
     required this.child,
   });
+
   final Widget child;
   final double? height;
   @override

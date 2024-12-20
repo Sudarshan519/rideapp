@@ -69,8 +69,8 @@ class _SignupState extends State<Signup> {
                   hintText: "Search ...",
                 ),
                 inputDecoration: InputDecoration(
-                    // contentPadding: const EdgeInsets.symmetric(
-                    //     horizontal: 20, vertical: 16),
+                    contentPadding: const EdgeInsets.symmetric(
+                        horizontal: 20, vertical: 12),
                     hintText: "Mobile Number",
                     isDense: false,
                     errorStyle: TextStyle(
@@ -79,6 +79,7 @@ class _SignupState extends State<Signup> {
                     hintStyle: AppTextStyles.normal.copyWith(
                       color: "#A0A0A0".toHex(),
                       fontWeight: FontWeight.w500,
+                      fontSize: 16,
                     ),
                     // prefixIconConstraints: BoxConstraints(
                     //     minWidth: 0, maxHeight: Platform.isIOS ? 24.r : 18.r),

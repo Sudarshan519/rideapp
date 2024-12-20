@@ -127,7 +127,7 @@ class _CustomInputFieldState extends State<CustomInputField> {
             filled: widget.backgroundColor != null ? true : false,
             isDense: false,
             contentPadding: widget.contentPadding ??
-                const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+                const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
             hintText: widget.hintText,
             counterText: "",
             // prefix: widget.prefix,
@@ -138,6 +138,7 @@ class _CustomInputFieldState extends State<CustomInputField> {
                 ? AppTextStyles.normal.copyWith(
                     color: "#A0A0A0".toHex(),
                     fontWeight: FontWeight.w500,
+                    fontSize: 16,
                   )
                 : AppTextStyles.normal.copyWith(color: Colors.black),
             // prefixIconConstraints: BoxConstraints(

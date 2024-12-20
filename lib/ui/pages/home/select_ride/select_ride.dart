@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:rideapp/ui/pages/home/home_screen.dart';
+import 'package:rideapp/ui/pages/home/widgets/waiting_screen.dart';
 import 'package:rideapp/ui/pages/utils/colors.dart';
 import 'package:rideapp/ui/pages/widgets/app_button.dart';
 
@@ -46,11 +47,15 @@ class _SelectRidePageState extends State<SelectRidePage> {
                   SizedBox(
                     width: 8,
                   ),
-                  Text("Current Location/Pickup point",
-                      style: TextStyle(
-                          fontSize: 12,
-                          fontWeight: FontWeight.w400,
-                          color: Colors.grey.shade800)),
+                  Expanded(
+                    child: Text("Current Location/Pickup point",
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
+                        style: TextStyle(
+                            fontSize: 12,
+                            fontWeight: FontWeight.w400,
+                            color: Colors.grey.shade800)),
+                  ),
                 ]),
               ),
             ),
@@ -151,7 +156,9 @@ class _SelectRidePageState extends State<SelectRidePage> {
                             child: AppButton(
                               isRounded: true,
                               label: 'Book Ride',
-                              onPressed: () {},
+                              onPressed: () {
+                                Get.to(WithMap(child: WaitingScreen()));
+                              },
                             ),
                           ),
                           const SizedBox(
