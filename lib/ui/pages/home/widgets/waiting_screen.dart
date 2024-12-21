@@ -49,8 +49,42 @@ class WaitingScreen extends StatelessWidget {
             label: 'Cancel Ride',
             onPressed: () {
               Get.to(
-                  () => const WithMap(
+                  () => WithMap(
+                        // child: SizedBox(),
                         child: RiderConfirm(),
+                        positionedWidget: Positioned(
+                          bottom: 430,
+                          left: 20,
+                          right: 10,
+                          child: Align(
+                            alignment: Alignment.topRight,
+                            child: Container(
+                              margin:
+                                  const EdgeInsets.only(right: 12, bottom: 12),
+                              alignment: Alignment.center,
+                              height: 70,
+                              width: 70,
+                              decoration: BoxDecoration(
+                                boxShadow: [
+                                  BoxShadow(
+                                      blurRadius: 1,
+                                      color: "#FF0012".toHex(),
+                                      offset: const Offset(0, 0))
+                                ],
+                                shape: BoxShape.circle,
+                                color: "background: #FF0012;".toHexColor(),
+                              ),
+                              child: Text(
+                                "SOS",
+                                style: TextStyle(
+                                  fontSize: 18,
+                                  color: "background: #FFFFFF;".toHexColor(),
+                                  fontWeight: FontWeight.w600,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
                       ),
                   preventDuplicates: false);
             },

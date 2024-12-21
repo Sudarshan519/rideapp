@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:rideapp/ui/pages/home/search_dorp_screen.dart';
 import 'package:rideapp/ui/pages/utils/colors.dart';
 import 'package:rideapp/ui/pages/utils/extension.dart';
 import 'package:rideapp/ui/pages/widgets/app_button.dart';
@@ -17,7 +19,57 @@ class CancelRide extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Palette.primary,
-      body: const Column(),
+      body: SafeArea(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 18.0, vertical: 18),
+          child: Column(
+            children: [
+              Padding(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 18.0, vertical: 16),
+                child: Stack(
+                  alignment: Alignment.center,
+                  children: [
+                    CircularCloseButton(),
+                    Center(
+                      child: Text("Cancel Ride",
+                          style: Get.textTheme.titleMedium?.copyWith(
+                            color: Colors.white,
+                          ),
+                          textAlign: TextAlign.center),
+                    ),
+                  ],
+                ),
+              ),
+              100.toh,
+              Container(
+                height: 182,
+                child: Stack(children: [
+                  CircleAvatar(
+                    radius: 70,
+                    child: Image.asset(
+                      'assets/Ellipse 10.png',
+                      height: 182,
+                      width: 187,
+                    ),
+                  ),
+                  Positioned(
+                    right: 0,
+                    child: CircleAvatar(
+                      radius: 20,
+                      backgroundColor: Colors.red,
+                      child: Icon(
+                        Icons.close,
+                        color: Colors.white,
+                      ),
+                    ),
+                  )
+                ]),
+              )
+            ],
+          ),
+        ),
+      ),
       bottomSheet: BottomSheetWidget(
         height: 392,
         child: Padding(
